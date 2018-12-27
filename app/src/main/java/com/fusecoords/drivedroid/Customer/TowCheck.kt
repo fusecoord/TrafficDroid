@@ -21,7 +21,6 @@ class TowCheck : AppCompatActivity() {
         licenceTypeAdapter = TowAdapter(items, this)
         recylerType.adapter = licenceTypeAdapter
         recylerType.layoutManager = LinearLayoutManager(this)
-
         search.setOnClickListener {
             var mDatabase: DatabaseReference =
                 FirebaseDatabase.getInstance().getReference(Tow.DB_TABLE_LICENCE)
