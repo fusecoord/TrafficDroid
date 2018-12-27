@@ -24,7 +24,7 @@ class CustDashboard : AppCompatActivity() {
         //change password ,email etc
 
 
-        //tow alert systme
+        //tow alert systme -done
 //       traffice alerts -done
 //        permisison check with locaiton -done
 
@@ -45,7 +45,6 @@ class CustDashboard : AppCompatActivity() {
         }
 
         check_towed.setOnClickListener {
-            
             startActivity(Intent(this@CustDashboard, TowCheck::class.java))
         }
         view_alert.setOnClickListener {

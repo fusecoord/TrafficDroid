@@ -32,10 +32,17 @@ class StatusAdapter(val items: ArrayList<Violation>, val context: Context) : Rec
         holder.date.setText(items.get(position).Date)
         holder.offence.setText(items.get(position).Offence)
         holder.law.setText(items.get(position).Section)
-        holder.price.setText(items.get(position).TotalAmount)
+        if (items.get(position).LateFees.equals(0))
+            holder.price.setText("Rs. " + items.get(position).TotalAmount)
+        else
+            holder.price.setText(
+                "Rs. " + items.get(position).TotalAmount + " \n(Including Late Fees: +${items.get(
+                    position
+                ).LateFees})"
+            )
         if (items.get(position).IsPaid) {
             holder.paid.setText("Paid")
-            holder.paid.setOnClickListener {  }
+            holder.paid.setOnClickListener { }
         } else {
             holder.paid.setOnClickListener {
                 var receipt = items.get(position)
@@ -46,6 +53,10 @@ class StatusAdapter(val items: ArrayList<Violation>, val context: Context) : Rec
 
             holder.paid.setText("UnPaid")
         }
+        if (!items.get(0).VehicleNo.equals(""))
+            holder.fineON.text = "Fine to be paid for Vehicle No : " + items.get(0).VehicleNo
+        else if (!items.get(0).LicenceNo.equals(""))
+            holder.fineON.text = "Fine to be paid for Licence No : " + items.get(0).LicenceNo
 
     }
 
@@ -63,4 +74,5 @@ class StatusHolder(view: View) : RecyclerView.ViewHolder(view) {
     var law: TextView = view.findViewById(R.id.law)
     var price: TextView = view.findViewById(R.id.price)
     var paid: Button = view.findViewById(R.id.paid)
+    var fineON: TextView = view.findViewById(R.id.fineOn)
 }

@@ -22,12 +22,18 @@
                   android:layout_height="wrap_content"
                   android:text="adf"
                   android:id="@+id/law"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text="adf"
+                  android:id="@+id/fineOn"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical" android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <TextView android:layout_width="match_parent"
                   android:text="adf"
+                  android:gravity="center"
                   android:layout_height="wrap_content"
                   android:id="@+id/price"/>
 

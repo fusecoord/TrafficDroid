@@ -15,7 +15,7 @@ class Receipt {
 
     var Offence: String = ""
     var Section: String = ""
-    var TotalAmount: String = ""
+    var TotalAmount: Int = 0
     var LicenceNo: String = ""
     var VehicleNo: String = ""
     var FineId: Int = 0

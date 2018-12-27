@@ -22,7 +22,7 @@ import java.security.NoSuchAlgorithmException
 class TowAdapter(val items: ArrayList<Tow>, val context: Context) : RecyclerView.Adapter<TowHolder>() {
 
     interface OnClickListener {
-        fun OnClick(receipt: Violation)
+        fun OnClick(receipt: Tow)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TowHolder {
@@ -38,8 +38,10 @@ class TowAdapter(val items: ArrayList<Tow>, val context: Context) : RecyclerView
             position
         ).Comment
 
+        holder.contact.text = items.get(
+            position
+        ).Contact
     }
-
 
     // Gets the number of animals in the list
     override fun getItemCount(): Int {
@@ -51,5 +53,5 @@ class TowHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
     var date: TextView = view.findViewById(R.id.date)
     var comment: TextView = view.findViewById(R.id.comment)
-
+    var contact: TextView = view.findViewById(R.id.contact)
 }

@@ -30,7 +30,7 @@ class ValidateFine : AppCompatActivity() {
             for (item in items!!) {
                 var user = Receipt();
 
-                user.Date = Date().toString()
+                user.Date = (application as CustomApp).getDateTime(Date())
                 user.FineId = item.Sr_No
                 user.Latitude = (application as CustomApp).currentLocation!!.latitude
                 user.Longitude = (application as CustomApp).currentLocation!!.longitude
@@ -55,7 +55,7 @@ class ValidateFine : AppCompatActivity() {
                 if (item.violationList.count() > 0) {
                     amout = amout * item.violationList.count()
                 }
-                user.TotalAmount = amout.toString()
+                user.TotalAmount = amout
 
                 var mDatabase: DatabaseReference =
                     FirebaseDatabase.getInstance().getReference(Receipt.DB_TABLE_LICENCE)
@@ -97,7 +97,7 @@ class ValidateFine : AppCompatActivity() {
 
 
                         for (snapshot in dataSnapshot.children) {
-                            val bullet = snapshot.getValue<Violation>(Violation::class.java!!)
+                            val bullet = snapshot.getValue<Violation>(Violation::class.java)
 
                             for (item in items!!) {
                                 bullet!!.Id = snapshot.ref.key!!

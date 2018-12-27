@@ -118,11 +118,21 @@ class CustomApp : Application() {
         val format = SimpleDateFormat("dd/MM/yyy")
         return format.format(date)
     }
+    fun toDate(date: String): Date {
+        val format = SimpleDateFormat("dd/MM/yyy")
+        return format.parse(date)
+    }
 
     fun getDateTime(date: Date): String {
         val format = SimpleDateFormat("dd/MM/yyy hh:mm:ss a")
         return format.format(date)
     }
+
+    fun toDateTime(date: String): Date {
+        val format = SimpleDateFormat("dd/MM/yyy hh:mm:ss a")
+        return format.parse(date)
+    }
+
     fun startLocationUpdates(activity: AppCompatActivity) {
         if (ActivityCompat.checkSelfPermission(
                 this,

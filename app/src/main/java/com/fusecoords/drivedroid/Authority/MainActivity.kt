@@ -10,6 +10,8 @@ import android.widget.*
 
 import com.google.zxing.integration.android.IntentIntegrator
 import android.widget.Toast
+import com.fusecoords.drivedroid.Customer.DivisonList
+import com.fusecoords.drivedroid.Customer.RtoList
 import com.fusecoords.drivedroid.R
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -107,6 +109,13 @@ class MainActivity : AppCompatActivity() {
         towVehicle.setOnClickListener {
             startActivity(Intent(this@MainActivity, TowVehicle::class.java))
         }
+        traffic_division.setOnClickListener {
+            startActivity(Intent(this@MainActivity, DivisonList::class.java))
+        }
+        traffic_rto.setOnClickListener {
+            startActivity(Intent(this@MainActivity, RtoList::class.java))
+        }
+
         signOut!!.setOnClickListener {
             signOut()
         }

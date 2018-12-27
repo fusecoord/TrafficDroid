@@ -13,7 +13,7 @@ class Tow {
     constructor() {
 
     }
-
+    var Contact: String = ""
     var VehicleNo: String = ""
     var DateTime: String = ""
     var ReportedBy: String = ""

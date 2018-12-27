@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.fusecoords.drivedroid.Authority.Receipt
 import com.fusecoords.drivedroid.Authority.Violation
+import com.fusecoords.drivedroid.CustomApp
 import com.fusecoords.drivedroid.R
 import com.fusecoords.drivedroid.R.id.recylerType
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +21,10 @@ import kotlinx.android.synthetic.main.activity_view_status.*
 import org.json.JSONObject
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.util.*
+import android.R.attr.duration
+import android.support.annotation.IntegerRes
+import java.util.concurrent.TimeUnit
 
 
 class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
@@ -45,8 +50,19 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
                 if (dataSnapshot.exists()) {
                     items.clear()
                     for (snapshot in dataSnapshot.children) {
+
                         var bullet = snapshot.getValue<Violation>(Violation::class.java!!)
                         bullet!!.Key = snapshot.key!!
+
+                        var dateAtIndex = (application as CustomApp).toDateTime(bullet.Date)
+
+                        val diff = Date().getTime() - dateAtIndex.getTime()
+                        val diffInDays = TimeUnit.MILLISECONDS.toDays(diff)
+                        if (diffInDays > 7) {
+                            bullet!!.LateFees = 100
+                            bullet!!.TotalAmount = bullet!!.TotalAmount +
+                                    bullet!!.LateFees
+                        }
                         items.add(bullet!!)
                     }
                     licenceTypeAdapter!!.notifyDataSetChanged()
@@ -66,13 +82,13 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
 
         val phone = "8882434664"
         val productName = receipt!!.Offence
-        val firstName = "piyush"
+        val firstName = "Auth"
         val txnId = receipt.Key
-        val email = "piyush.jain@payu.in"
+        val email = "auth@gmail.com"
         //        "https://www.payumoney.com/mobileapp/payumoney/success.php
         val sUrl = "https://test.payumoney.com/mobileapp/payumoney/success.php"
         val fUrl = "https://test.payumoney.com/mobileapp/payumoney/failure.php"
-        val udf1 = ""
+        val udf1 = receipt.LateFees
         val udf2 = ""
         val udf3 = ""
         val udf4 = ""
@@ -82,7 +98,7 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
         val merchantId = "4934580"
         val builder = PayUmoneySdkInitializer.PaymentParam.Builder()
 
-        var amount = java.lang.Double.parseDouble(receipt!!.TotalAmount)
+        var amount = java.lang.Double.parseDouble(receipt!!.TotalAmount.toString())
         builder.setAmount(amount)
             .setTxnId(txnId)
             .setPhone(phone)
@@ -91,7 +107,7 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
             .setEmail(email)
             .setsUrl(sUrl)
             .setfUrl(fUrl)
-            .setUdf1(udf1)
+            .setUdf1("" + udf1)
             .setUdf2(udf2)
             .setUdf3(udf3)
             .setUdf4(udf4)
@@ -130,11 +146,13 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
                     //Success Transaction
                     val payuResponse = JSONObject(transactionResponse!!.getPayuResponse())
                     val taxId = payuResponse.optJSONObject("result").optString("txnid")
-
+                    val udf1 = payuResponse.optJSONObject("result").optString("udf1")
                     var mDatabase: DatabaseReference =
                         FirebaseDatabase.getInstance().getReference(Receipt.DB_TABLE_LICENCE)
                     val result = HashMap<String, Any>()
+                    result.put("LateFees", udf1)
                     result.put("IsPaid", true)
+                    result.put("PaidDate", (application as CustomApp).getDateTime(Date()))
                     mDatabase.child(FirebaseAuth.getInstance().uid!!).child(taxId).updateChildren(result)
                     for (item in items) {
                         if (item.Key.equals(taxId)) {

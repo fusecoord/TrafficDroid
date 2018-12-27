@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/btn_view_stat"
+                    android:text="View Pending Fines"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
 
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="Traffic Division"
+                    android:text="View Traffic Division"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
             <Button
@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="RTO list"
+                    android:text="View RTO offices"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
 
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:background="@color/colorPrimary"
-                    android:text="View Alert"
+                    android:text="View Traffic Alert"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
             <Button

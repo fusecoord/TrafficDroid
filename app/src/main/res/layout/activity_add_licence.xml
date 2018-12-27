@@ -24,6 +24,7 @@
                     android:layout_height="match_parent">
 
                 <ImageButton
+                        android:visibility="gone"
                         android:background="@android:color/transparent"
                         android:id="@+id/img_sign"
                         android:layout_width="@dimen/logo_w_h"

@@ -14,11 +14,12 @@ class Violation {
 
     }
 
+    var LateFees: Int = 0
     var Id: String = ""
     var Key: String = ""
     var Offence: String = ""
     var Section: String = ""
-    var TotalAmount: String = ""
+    var TotalAmount: Int = 0
     var LicenceNo: String = ""
     var VehicleNo: String = ""
     var FineId: Int = 0
