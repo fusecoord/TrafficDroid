@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <TextView
+            android:padding="@dimen/activity_horizontal_margin"
+            android:id="@+id/licenceNo"
+            android:text="Hello"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+    <LinearLayout
+            android:id="@+id/expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <Button
+                style="?android:textAppearanceSmall"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:id="@+id/reg"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Registration"
+                android:layout_height="match_parent"/>
+        <Button
+                style="?android:textAppearanceSmall"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:id="@+id/taxation"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Taxation"
+                android:layout_height="match_parent"/>
+        <Button
+
+                style="?android:textAppearanceSmall"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:id="@+id/puc"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="PUC"
+                android:layout_height="match_parent"/>
+        <Button
+
+                style="?android:textAppearanceSmall"
+                android:background="@color/colorAccent"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:id="@+id/insurance"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Insurance"
+                android:layout_height="match_parent"/>
+    </LinearLayout>
+</LinearLayout>
