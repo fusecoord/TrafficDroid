@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private var changePassword: Button? = null
     private var sendEmail: Button? = null
     private var remove: Button? = null
-    private var signOut: Button? = null
+    private var signOut: ImageView? = null
 
     private var oldEmail: EditText? = null
     private var newEmail: EditText? = null
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         changePassword = findViewById(R.id.changePass) as Button
         sendEmail = findViewById(R.id.send) as Button
         remove = findViewById(R.id.remove) as Button
-        signOut = findViewById(R.id.sign_out) as Button
+        signOut = findViewById(R.id.sign_out) as ImageView
 
         oldEmail = findViewById(R.id.old_email) as EditText
         newEmail = findViewById(R.id.new_email) as EditText
@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity() {
 
         signOut!!.setOnClickListener {
             signOut()
+
         }
 
 

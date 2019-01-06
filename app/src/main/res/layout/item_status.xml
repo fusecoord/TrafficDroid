@@ -1,45 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="horizontal"
-              android:padding="@dimen/activity_horizontal_margin"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    <LinearLayout
-            android:layout_weight="1"
-            android:orientation="vertical" android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:text="adf"
-                  android:id="@+id/date"/>
+<android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:padding="@dimen/activity_horizontal_margin"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:text="adf"
-                  android:id="@+id/offence"/>
+                <TextView android:layout_width="0dp"
+                          android:layout_height="wrap_content"
+                          android:text="adf"
+                          android:layout_weight="1"
+                          android:textStyle="bold"
+                          android:textSize="16sp"
+                          android:id="@+id/offence"/>
+                <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:gravity="right"
+                        android:layout_height="wrap_content">
+                    <TextView android:layout_width="wrap_content"
+                              android:text="adf"
+                              android:gravity="right"
+                              android:textStyle="bold"
+                              android:textSize="16sp"
+                              android:layout_height="wrap_content"
+                              android:id="@+id/price"/>
+                    <TextView android:layout_width="wrap_content"
+                              android:text="adf"
+                              android:textColor="@color/red"
+                              android:gravity="right"
+                              android:textStyle="bold"
+                              android:textSize="14sp"
+                              android:layout_height="wrap_content"
+                              android:id="@+id/lateprice"/>
+                </LinearLayout>
+            </LinearLayout>
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:text="adf"
-                  android:id="@+id/law"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="adf"
+                      android:id="@+id/law"/>
 
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:text="adf"
-                  android:id="@+id/fineOn"/>
+            <TextView android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:text="adf"
+                      android:id="@+id/fineOn"/>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:textStyle="italic"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="adf"
+                    android:id="@+id/date"/>
+
+            <Button
+
+                    android:gravity="right|center_vertical"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:text="adf"
+                    android:background="@null"
+                    android:layout_gravity="right"
+                    android:layout_height="30dp"
+                    android:id="@+id/paid"/>
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-            android:orientation="vertical" android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        <TextView android:layout_width="match_parent"
-                  android:text="adf"
-                  android:gravity="center"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/price"/>
-
-        <Button android:layout_width="match_parent"
-                android:text="adf"
-                android:layout_height="wrap_content"
-                android:id="@+id/paid"/>
-    </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.CardView>

@@ -41,6 +41,32 @@ class LicenceList : AppCompatActivity() {
                     items.clear()
                     for (snapshot in dataSnapshot.children) {
                         val bullet = snapshot.getValue<Licence>(Licence::class.java!!)
+
+                        var mDatabase: DatabaseReference =
+                            FirebaseDatabase.getInstance().getReference(LicenceType.DB_TABLE_LICENCE_TYPE)
+                        val query = mDatabase.orderByChild("LicenceId").equalTo(snapshot.key)
+                        query.addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onCancelled(p0: DatabaseError) {
+
+                            }
+
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                if (dataSnapshot.exists()) {
+
+                                    var types = ArrayList<LicenceType>()
+                                    for (snapshot in dataSnapshot.children) {
+                                        val bullet1 = snapshot.getValue<LicenceType>(LicenceType::class.java!!)
+                                        types.add(bullet1!!)
+                                    }
+                                    bullet!!.licenceType = types
+                                    licenceTypeAdapter!!.notifyDataSetChanged()
+                                } else {
+                                    // Do stuff
+                                }
+                            }
+
+
+                        })
                         items.add(bullet!!)
                     }
                     licenceTypeAdapter!!.notifyDataSetChanged()

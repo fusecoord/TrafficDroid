@@ -38,7 +38,7 @@
                             android:layout_width="@dimen/logo_w_h"
                             android:layout_height="@dimen/logo_w_h"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginBottom="30dp"
+                            android:layout_marginBottom="10dp"
                             android:src="@android:drawable/gallery_thumb"/>
 
                     <android.support.design.widget.TextInputLayout
@@ -52,7 +52,7 @@
                                 android:hint="@string/firstname"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
@@ -66,7 +66,7 @@
                                 android:hint="@string/lastname"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
@@ -80,7 +80,7 @@
                                 android:hint="@string/fathername"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
@@ -95,7 +95,7 @@
                                 android:maxLines="1"
                                 android:inputType="date"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -110,7 +110,7 @@
                                 android:hint="@string/bloodgroup"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
@@ -125,7 +125,7 @@
                                 android:inputType="textEmailAddress"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -142,7 +142,7 @@
                                 android:inputType="phone"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
@@ -158,7 +158,7 @@
                                 android:maxLines="1"
 
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
@@ -172,7 +172,7 @@
                                 android:inputType="numberDecimal"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
                             android:layout_width="match_parent"
@@ -188,7 +188,7 @@
                                 android:inputType="textPassword"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
@@ -205,7 +205,7 @@
                                 android:inputType="textPassword"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textColor="@android:color/white"/>
+                                android:textColor="@android:color/black"/>
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -223,37 +223,44 @@
                 </LinearLayout>
             </ScrollView>
             <Button
-
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/sign_up_button"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="10dp"
                     style="?android:textAppearanceSmall"
-                    android:background="@color/colorAccent"
+                    android:background="@color/colorPrimaryDark"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:text="@string/action_sign_in_short"
 
             />
-            <Button
-                    android:id="@+id/sign_in_button"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:text="@string/btn_link_to_login"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="15dp"/>
-            <Button
-                    android:id="@+id/btn_reset_password"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:text="@string/btn_forgot_password"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorPrimaryDark"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/sign_in_button"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:background="@null"
+                        android:text="@string/btn_link_to_login"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="15dp"/>
+                <Button
+                        android:id="@+id/btn_reset_password"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="30dp"
+                        android:background="@null"
+                        android:text="@string/btn_forgot_password"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimaryDark"/>
+            </LinearLayout>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </android.support.design.widget.CoordinatorLayout>

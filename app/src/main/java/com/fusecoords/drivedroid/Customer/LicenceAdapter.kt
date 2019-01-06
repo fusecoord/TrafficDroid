@@ -15,7 +15,26 @@ class LicenceAdapter(val items: ArrayList<Licence>, val context: Context) : Recy
     }
 
     override fun onBindViewHolder(holder: LicenceHolder, position: Int) {
-        holder.licenceNo.text = items.get(position).LicenceNo
+        holder.dlNo.setText(items.get(position).LicenceNo)
+        holder.doi.setText(items.get(position).Doi)
+        holder.expdate.setText(items.get(position).Doe)
+        holder.dld.setText(items.get(position).Dld)
+        holder.auth.setText(items.get(position).Auth)
+        var cov = ""
+        var doi = ""
+        if(items.get(position).licenceType!=null) {
+            for (type in items.get(position).licenceType!!) {
+                cov = type.LicenceType + "\n"
+                doi = type.LicenceDOI + "\n"
+            }
+            holder.cov.visibility=View.VISIBLE
+            holder.covdoi.visibility=View.VISIBLE
+            holder.cov.setText(cov)
+            holder.covdoi.setText(doi)
+        }else{
+            holder.cov.visibility=View.GONE
+            holder.covdoi.visibility=View.GONE
+        }
     }
 
 
@@ -29,5 +48,11 @@ class LicenceAdapter(val items: ArrayList<Licence>, val context: Context) : Recy
 
 class LicenceHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
-    var licenceNo: TextView = view.findViewById(R.id.licenceNo)
+    var dlNo: EditText = view.findViewById(R.id.dlNo)
+    var doi: EditText = view.findViewById(R.id.doi)
+    var expdate: EditText = view.findViewById(R.id.expdate)
+    var dld: EditText = view.findViewById(R.id.dld)
+    var auth: EditText = view.findViewById(R.id.auth)
+    var cov: EditText = view.findViewById(R.id.cov)
+    var covdoi: EditText = view.findViewById(R.id.covdoi)
 }

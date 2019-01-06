@@ -1,11 +1,201 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:padding="@dimen/activity_horizontal_margin"
-              android:layout_height="match_parent">
-    <TextView
-            android:id="@+id/licenceNo"
-            android:text="Hello"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"/>
-</LinearLayout>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:padding="5dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="THE UNION OF INDIA"/>
+            <TextView
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="MAHARASHTRA MOTOR DRIVING LICENCE"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/dlNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DL No."
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/doi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOI"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/expdate"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Valid till"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/dld"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DLD"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:visibility="visible"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/auth"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Issue Authority"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <TextView android:layout_marginLeft="10dp"
+                  android:layout_marginRight="10dp"
+                  android:layout_marginTop="15dp"
+                  android:textSize="12sp"
+                  android:text="AUTHORISATION TO DRIVE FOLLOWING CLASS OF VEHICLES THROUGHOUT INDIA"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:paddingBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/cov"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="COV"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/covdoi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="DOI"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

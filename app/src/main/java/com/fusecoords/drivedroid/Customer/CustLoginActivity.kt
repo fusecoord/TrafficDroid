@@ -53,11 +53,13 @@ class CustLoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         btnSignup!!.setOnClickListener {
+            CustRegisterActivity.Flow = 0
             startActivity(
-                Intent(
-                    this@CustLoginActivity,
-                    CustRegisterActivity::class.java
-                )
+
+                        Intent (
+                        this@CustLoginActivity,
+                CustRegisterActivity::class.java
+            )
             )
         }
 

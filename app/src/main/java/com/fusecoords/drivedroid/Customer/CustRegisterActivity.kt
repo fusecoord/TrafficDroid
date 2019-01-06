@@ -11,25 +11,25 @@ import android.support.v7.app.AlertDialog
 import android.text.TextUtils
 import android.view.View
 import android.widget.*
-import com.fusecoords.drivedroid.Authority.MainActivity
-import com.fusecoords.drivedroid.Authority.ResetPasswordActivity
-import com.fusecoords.drivedroid.Authority.User
-import com.fusecoords.drivedroid.Authority.Utility
+import com.fusecoords.drivedroid.Authority.*
 import com.fusecoords.drivedroid.R
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_cust_register.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
 
 class CustRegisterActivity : AppCompatActivity() {
+    companion object {
+        var Flow: Int = 0
+    }
 
     private var inputFirstName: EditText? = null
     private var inputLastName: EditText? = null
@@ -73,7 +73,8 @@ class CustRegisterActivity : AppCompatActivity() {
         btnImagePick = findViewById(R.id.img_profile) as ImageButton
         btnResetPassword!!.setOnClickListener {
             startActivity(
-                Intent( this@CustRegisterActivity,
+                Intent(
+                    this@CustRegisterActivity,
                     ResetPasswordActivity::class.java
                 )
             )
@@ -81,6 +82,55 @@ class CustRegisterActivity : AppCompatActivity() {
         btnImagePick!!.setOnClickListener { selectImage() }
         btnSignIn!!.setOnClickListener { finish() }
 
+
+        if (Flow == 1) {
+            var mStorage: StorageReference =
+                FirebaseStorage.getInstance()
+                    .getReference(CustUser.DB_IMAGE_PATH + "/" + FirebaseAuth.getInstance().currentUser!!.uid + ".png")
+            var url = mStorage.getDownloadUrl()
+            url.addOnSuccessListener(OnSuccessListener<Any> { uri ->
+                System.out.println("Pass" + uri)
+                Picasso.get().load(uri.toString()).into(img_profile)
+            }).addOnFailureListener(OnFailureListener {
+                // Handle any errors
+                System.out.println("Failuare")
+            })
+            var mDatabase: DatabaseReference =
+                FirebaseDatabase.getInstance().getReference(CustUser.DB_USER_PATH)
+            mDatabase.child(FirebaseAuth.getInstance().currentUser!!.uid)
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(p0: DatabaseError) {
+
+                    }
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        //  if (dataSnapshot.exists()) {
+                        //   for (snapshot in dataSnapshot.children) {
+                        val bullet = dataSnapshot.getValue<CustUser>(CustUser::class.java!!)
+                        inputFirstName!!.setText(bullet!!.FirstName)
+                        inputLastName!!.setText(bullet!!.LastName)
+                        fathername!!.setText(bullet!!.Parent)
+                        dob!!.setText(bullet!!.Dob)
+
+                        bloodgroup!!.setText(bullet!!.BloodGroup)
+                        inputEmail!!.setText(bullet!!.Email)
+                        inputPhone!!.setText(bullet!!.Contact)
+                        pincode!!.setText(bullet!!.PinCode)
+                        address!!.setText(bullet!!.Address)
+                        // }
+                        // } else {
+                        // Do stuff
+                        // }
+                    }
+
+                })
+            btnSignUp!!.setText("Save")
+            btnResetPassword!!.visibility = View.GONE
+            btnSignIn!!.visibility = View.GONE
+            inputPassword!!.visibility = View.GONE
+            inputConfirmPassword!!.visibility = View.GONE
+
+        }
         btnSignUp!!.setOnClickListener(View.OnClickListener {
             val email = inputEmail!!.text.toString().trim()
             val password = inputPassword!!.text.toString().trim()
@@ -99,10 +149,10 @@ class CustRegisterActivity : AppCompatActivity() {
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(applicationContext, "Enter email address!", Toast.LENGTH_SHORT).show()
                 return@OnClickListener
-            } else if (TextUtils.isEmpty(password)) {
+            } else if (inputPassword!!.visibility == View.VISIBLE && TextUtils.isEmpty(password)) {
                 Toast.makeText(applicationContext, "Enter password!", Toast.LENGTH_SHORT).show()
                 return@OnClickListener
-            } else if (password.length < 6) {
+            } else if (inputPassword!!.visibility == View.VISIBLE && password.length < 6) {
                 Toast.makeText(
                     applicationContext,
                     "Password too short, enter minimum 6 characters!",
@@ -113,67 +163,116 @@ class CustRegisterActivity : AppCompatActivity() {
 
                 progressBar!!.visibility = View.VISIBLE
                 //create user
-                auth!!.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this@CustRegisterActivity) { task ->
-                        Toast.makeText(
-                            this@CustRegisterActivity,
-                            "createUserWithEmail:onComplete:" + task.isSuccessful,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        progressBar!!.visibility = View.GONE
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful) {
+                if (Flow == 0) {
+                    auth!!.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this@CustRegisterActivity) { task ->
                             Toast.makeText(
-                                this@CustRegisterActivity, "Authentication failed." + task.exception!!,
+                                this@CustRegisterActivity,
+                                "createUserWithEmail:onComplete:" + task.isSuccessful,
                                 Toast.LENGTH_SHORT
                             ).show()
-                        } else {
-                            if (immagex != null) {
-                                var mStorage: StorageReference =
-                                    FirebaseStorage.getInstance()
-                                        .getReference(CustUser.DB_IMAGE_PATH + "/" + FirebaseAuth.getInstance().currentUser!!.uid + ".png")
+                            progressBar!!.visibility = View.GONE
+                            // If sign in fails, display a message to the user. If sign in succeeds
+                            // the auth state listener will be notified and logic to handle the
+                            // signed in user can be handled in the listener.
+                            if (!task.isSuccessful) {
+                                Toast.makeText(
+                                    this@CustRegisterActivity, "Authentication failed." + task.exception!!,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                if (immagex != null) {
+                                    var mStorage: StorageReference =
+                                        FirebaseStorage.getInstance()
+                                            .getReference(CustUser.DB_IMAGE_PATH + "/" + FirebaseAuth.getInstance().currentUser!!.uid + ".png")
 
-                                val baos = ByteArrayOutputStream()
-                                immagex!!.compress(Bitmap.CompressFormat.PNG, 90, baos)
-                                val b = baos.toByteArray()
-                                mStorage.putBytes(b)
-                                    .addOnSuccessListener(OnSuccessListener {
-                                        System.out.println("Success uploaded")
-                                    }).addOnFailureListener(OnFailureListener {
-                                        System.out.println("Success failed")
+                                    val baos = ByteArrayOutputStream()
+                                    immagex!!.compress(Bitmap.CompressFormat.PNG, 90, baos)
+                                    val b = baos.toByteArray()
+                                    mStorage.putBytes(b)
+                                        .addOnSuccessListener(OnSuccessListener {
+                                            System.out.println("Success uploaded")
+                                        }).addOnFailureListener(OnFailureListener {
+                                            System.out.println("Success failed")
+                                        })
+                                }
+                                var user = CustUser();
+                                user.FirstName = firstname
+                                user.LastName = lastname
+                                user.Contact = contact
+                                user.Email = email
+
+                                user.Parent = parent
+                                user.Dob = dob
+                                user.BloodGroup = bloodgroup
+                                user.Address = address
+                                user.PinCode = pincode
+
+                                var mDatabase: DatabaseReference =
+                                    FirebaseDatabase.getInstance().getReference(CustUser.DB_USER_PATH)
+                                mDatabase.child(FirebaseAuth.getInstance().currentUser!!.uid)
+                                    .setValue(user.getHashMap())
+                                    .addOnCompleteListener(OnCompleteListener {
+                                        if (it.isSuccessful) {
+                                            startActivity(Intent(this@CustRegisterActivity, CustDashboard::class.java))
+                                            finish()
+                                        } else {
+                                            Toast.makeText(
+                                                this@CustRegisterActivity, "Register update failed.",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        }
                                     })
                             }
-                            var user = CustUser();
-                            user.FirstName = firstname
-                            user.LastName = lastname
-                            user.Contact = contact
-                            user.Email = email
-
-                            user.Parent = parent
-                            user.Dob = dob
-                            user.BloodGroup = bloodgroup
-                            user.Address = address
-                            user.PinCode = pincode
-
-                            var mDatabase: DatabaseReference =
-                                FirebaseDatabase.getInstance().getReference(CustUser.DB_USER_PATH)
-                            mDatabase.child(FirebaseAuth.getInstance().currentUser!!.uid)
-                                .setValue(user.getHashMap())
-                                .addOnCompleteListener(OnCompleteListener {
-                                    if (it.isSuccessful) {
-                                        startActivity(Intent(this@CustRegisterActivity, CustDashboard::class.java))
-                                        finish()
-                                    } else {
-                                        Toast.makeText(
-                                            this@CustRegisterActivity, "Register update failed.",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    }
-                                })
                         }
+                } else {
+                    if (immagex != null) {
+                        var mStorage: StorageReference =
+                            FirebaseStorage.getInstance()
+                                .getReference(CustUser.DB_IMAGE_PATH + "/" + FirebaseAuth.getInstance().currentUser!!.uid + ".png")
+
+                        val baos = ByteArrayOutputStream()
+                        immagex!!.compress(Bitmap.CompressFormat.PNG, 90, baos)
+                        val b = baos.toByteArray()
+                        mStorage.putBytes(b)
+                            .addOnSuccessListener(OnSuccessListener {
+                                System.out.println("Success uploaded")
+                            }).addOnFailureListener(OnFailureListener {
+                                System.out.println("Success failed")
+                            })
                     }
+                    var user = CustUser();
+                    user.FirstName = firstname
+                    user.LastName = lastname
+                    user.Contact = contact
+                    user.Email = email
+
+                    user.Parent = parent
+                    user.Dob = dob
+                    user.BloodGroup = bloodgroup
+                    user.Address = address
+                    user.PinCode = pincode
+
+                    var mDatabase: DatabaseReference =
+                        FirebaseDatabase.getInstance().getReference(CustUser.DB_USER_PATH)
+                    mDatabase.child(FirebaseAuth.getInstance().currentUser!!.uid)
+                        .setValue(user.getHashMap())
+                        .addOnCompleteListener(OnCompleteListener {
+                            if (it.isSuccessful) {
+                                Toast.makeText(
+                                    this@CustRegisterActivity, "Updated Successfully.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                finish()
+                            } else {
+                                Toast.makeText(
+                                    this@CustRegisterActivity, "Update request failed.",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        })
+
+                }
             }
         })
     }

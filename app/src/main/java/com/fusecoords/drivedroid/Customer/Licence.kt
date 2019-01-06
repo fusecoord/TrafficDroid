@@ -25,7 +25,7 @@ class Licence {
     var Dld: String? = ""
     var UserId: String? = ""
     var Auth: String? = ""
-
+    var licenceType: ArrayList<LicenceType>? = null
 
     fun getHashMap(): Any? {
         val jsonMap = Gson().fromJson<Any>(

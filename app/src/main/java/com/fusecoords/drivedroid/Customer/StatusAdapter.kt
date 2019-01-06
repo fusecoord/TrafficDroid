@@ -12,6 +12,7 @@ import android.widget.TextView
 import com.fusecoords.drivedroid.Authority.Receipt
 import com.fusecoords.drivedroid.R
 import android.provider.SyncStateContract.Helpers.update
+import android.support.v4.content.ContextCompat
 import com.fusecoords.drivedroid.Authority.Violation
 import com.payumoney.core.entity.PaymentEntity
 import java.security.MessageDigest
@@ -29,18 +30,24 @@ class StatusAdapter(val items: ArrayList<Violation>, val context: Context) : Rec
     }
 
     override fun onBindViewHolder(holder: StatusHolder, position: Int) {
-        holder.date.setText(items.get(position).Date)
+        holder.date.setText("Charge date " + items.get(position).Date)
         holder.offence.setText(items.get(position).Offence)
-        holder.law.setText(items.get(position).Section)
-        if (items.get(position).LateFees.equals(0))
-            holder.price.setText("Rs. " + items.get(position).TotalAmount)
-        else
-            holder.price.setText(
-                "Rs. " + items.get(position).TotalAmount + " \n(Including Late Fees: +${items.get(
-                    position
-                ).LateFees})"
+        holder.law.setText("Section: " + items.get(position).Section)
+        if (items.get(position).LateFees.equals(0)) {
+            holder.lateprice.visibility = View.GONE
+
+        } else {
+            holder.lateprice.visibility = View.VISIBLE
+            holder.lateprice.setText(
+                "Late Fees: ₹" + items.get(position).LateFees
             )
+        }
+        holder.price.setText(
+            "\u20B9" + items.get(position).TotalAmount
+
+        )
         if (items.get(position).IsPaid) {
+            holder.paid.setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark))
             holder.paid.setText("Paid")
             holder.paid.setOnClickListener { }
         } else {
@@ -50,13 +57,13 @@ class StatusAdapter(val items: ArrayList<Violation>, val context: Context) : Rec
                 pm.OnClick(receipt)
 
             }
-
+            holder.paid.setTextColor(ContextCompat.getColor(context, R.color.red))
             holder.paid.setText("UnPaid")
         }
         if (!items.get(0).VehicleNo.equals(""))
-            holder.fineON.text = "Fine to be paid for Vehicle No : " + items.get(0).VehicleNo
+            holder.fineON.text = "On Vehicle No : " + items.get(0).VehicleNo
         else if (!items.get(0).LicenceNo.equals(""))
-            holder.fineON.text = "Fine to be paid for Licence No : " + items.get(0).LicenceNo
+            holder.fineON.text = "On Licence No : " + items.get(0).LicenceNo
 
     }
 
@@ -73,6 +80,7 @@ class StatusHolder(view: View) : RecyclerView.ViewHolder(view) {
     var offence: TextView = view.findViewById(R.id.offence)
     var law: TextView = view.findViewById(R.id.law)
     var price: TextView = view.findViewById(R.id.price)
+    var lateprice: TextView = view.findViewById(R.id.lateprice)
     var paid: Button = view.findViewById(R.id.paid)
     var fineON: TextView = view.findViewById(R.id.fineOn)
 }

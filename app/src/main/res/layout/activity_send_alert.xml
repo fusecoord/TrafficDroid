@@ -40,17 +40,17 @@
                     android:lines="5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/hint_email"
+                    android:hint="Note"
                     android:inputType="textMultiLine"
                     android:textColor="@android:color/black"
                     android:textColorHint="@android:color/black"/>
             <Button
                     android:id="@+id/sendAlert"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorAccent"
                     android:text="Send Alert"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@android:color/white"/>
 
 
         </LinearLayout>

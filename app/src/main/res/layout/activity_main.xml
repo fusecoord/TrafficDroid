@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 xmlns:tools="http://schemas.android.com/tools"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent"
-                                                 android:fitsSystemWindows="true"
-                                                 tools:context=".Authority.MainActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              tools:context=".Authority.MainActivity">
 
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            app:title="Welcome to E-Fine Auth"
+            app:titleTextColor="@color/white"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp">
 
+        <ImageView
+                android:layout_gravity="right"
+                android:src="@drawable/logout"
+                android:padding="18dp"
+                android:id="@+id/sign_out"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@null"/>
+
+    </android.support.v7.widget.Toolbar>
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -226,17 +245,8 @@
                     android:textColor="@android:color/white"
                     android:textStyle="bold"/>
 
-            <Button
-                    android:id="@+id/sign_out"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/btn_sign_out"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
+
 
         </LinearLayout>
     </ScrollView>
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

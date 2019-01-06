@@ -137,7 +137,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:background="@color/colorAccent"
-                            android:text="@string/action_vehicle_type"
+                            android:text="Add Licence Type"
                             android:textColor="@android:color/white"
                             android:textStyle="bold"/>
 

@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
+            android:networkSecurityConfig="@xml/network_security_config"
+            android:usesCleartextTraffic="true"
             android:name=".CustomApp"
             android:allowBackup="true"
             android:icon="@drawable/launcher_icon"
@@ -17,13 +19,14 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:replace="android:allowBackup">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity
                 android:name=".Authority.LoginActivity"
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
                 android:name=".Authority.MainActivity"
-                android:label="@string/title_activity_profile"
+
                 android:theme="@style/AppTheme.NoActionBar"/>
         <activity
                 android:name=".Authority.SignupActivity"
@@ -35,29 +38,48 @@
                 android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Authority.UserInfoActivity">
         </activity>
-        <activity android:name=".SplashActivity">
+        <activity
+                android:theme="@style/AppTheme.NoActionBar"
+                android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
+
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Customer.CustLoginActivity">
+        <activity
+                android:theme="@style/AppTheme.NoActionBar"
+                android:name=".Customer.CustLoginActivity">
         </activity>
-        <activity android:name=".Customer.CustRegisterActivity">
+        <activity
+                android:theme="@style/AppTheme.NoActionBar"
+                android:name=".Customer.CustRegisterActivity">
         </activity>
-        <activity android:name=".Customer.CustDashboard">
+        <activity
+                android:theme="@style/AppTheme.NoActionBar"
+                android:name=".Customer.CustDashboard">
         </activity>
-        <activity android:name=".Customer.AddLicence">
+        <activity
+                android:label="Add Licence"
+                android:name=".Customer.AddLicence">
         </activity>
-        <activity android:name=".Customer.LicenceList"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+                android:label="My Licences"
+                android:name=".Customer.LicenceList"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".Customer.VehicleList"
-                  android:theme="@style/AppTheme.NoActionBar">
+        <activity
+                android:label="My Vehicles"
+                android:name=".Customer.VehicleList"
+                android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".Customer.AddVehicle">
+        <activity
+                android:label="Add Vehicle"
+                android:name=".Customer.AddVehicle">
         </activity>
-        <activity android:name=".Authority.PayFine">
+        <activity android:label="Enter Input"
+                  android:theme="@style/AppDialogTheme"
+                  android:name=".Authority.PayFine">
         </activity>
         <activity android:name=".Authority.FineListSelect">
         </activity>
@@ -67,32 +89,60 @@
         </activity>
         <activity android:name=".Authority.Attachement">
         </activity>
-        <activity android:name=".Customer.ViewStatus">
+        <activity
+                android:label="Pending Fines"
+                android:name=".Customer.ViewStatus">
         </activity>
         <!-- <activity android:name=".Customer.PaymentActivity"> -->
         <!-- </activity> -->
-        <activity android:name=".Customer.ViewFine">
+        <activity
+                android:label="View Fines"
+                android:name=".Customer.ViewFine">
         </activity>
-        <activity android:name=".Authority.UploadAttachement">
+        <activity
+                android:label="Upload Docs"
+                android:name=".Authority.UploadAttachement">
         </activity>
-        <activity android:name=".Customer.TowCheck">
+        <activity
+                android:label="Towed Vehicle?"
+                android:name=".Customer.TowCheck">
         </activity>
-        <activity android:name=".Customer.DivisonList">
+        <activity
+                android:label="View Traffic Divisions"
+                android:name=".Customer.DivisonList">
         </activity>
-        <activity android:name=".Customer.AddressLocation">
+        <activity
+                android:label="View Location"
+                android:name=".Customer.AddressLocation">
         </activity>
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyBmyylcsR_-glWi7WOEcYieL8TmqvbJir0"/>
 
-        <activity android:name=".Customer.RtoList">
+        <activity
+                android:label="View RTO Office"
+                android:name=".Customer.RtoList">
         </activity>
-        <activity android:name=".Authority.SendAlert">
+        <activity
+                android:label="Send Traffic Alerts"
+                android:name=".Authority.SendAlert">
         </activity>
-        <activity android:name=".Customer.ViewAlert">
+        <activity
+                android:label="View Traffic Alerts"
+                android:name=".Customer.ViewAlert">
         </activity>
-        <activity android:name=".Authority.TowVehicle">
+        <activity
+                android:label="Tow Vehicle"
+                android:name=".Authority.TowVehicle">
+        </activity>
+        <activity
+                android:label="Pay Fine"
+                android:name=".Customer.PayActivity">
+        </activity>
+        <activity
+                android:label="Change Password"
+                android:name=".Customer.ChangePasswordActivity">
         </activity>
     </application>
 

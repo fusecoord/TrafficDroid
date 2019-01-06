@@ -67,4 +67,5 @@ dependencies {
     implementation 'com.payumoney.sdkui:plug-n-play:1.2.0'
     implementation 'com.google.android.gms:play-services-maps:16.0.0'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
+    compile 'com.sasidhar.smaps.payumoney:payumoney:0.0.3'
 }

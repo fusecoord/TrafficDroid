@@ -25,6 +25,12 @@ import java.util.*
 import android.R.attr.duration
 import android.support.annotation.IntegerRes
 import java.util.concurrent.TimeUnit
+import com.sasidhar.smaps.payumoney.PayUMoney_Constants
+import com.sasidhar.smaps.payumoney.Utils
+import com.sasidhar.smaps.payumoney.Utils.generateHash
+import com.sasidhar.smaps.payumoney.MakePaymentActivity
+import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_payment.*
 
 
 class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
@@ -59,7 +65,14 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
                         val diff = Date().getTime() - dateAtIndex.getTime()
                         val diffInDays = TimeUnit.MILLISECONDS.toDays(diff)
                         if (diffInDays > 7) {
-                            bullet!!.LateFees = 100
+                            if (diffInDays > 7)
+                                bullet!!.LateFees = 100
+                            else if (diffInDays > 14)
+                                bullet!!.LateFees = 200
+                            else if (diffInDays > 21)
+                                bullet!!.LateFees = 300
+                            else if (diffInDays > 28)
+                                bullet!!.LateFees = 400
                             bullet!!.TotalAmount = bullet!!.TotalAmount +
                                     bullet!!.LateFees
                         }
@@ -72,10 +85,11 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
 
     }
 
+    var globalReceipt: Violation? = null
     override fun OnClick(receipt: Violation) {
 
         makePayment(receipt)
-
+        globalReceipt = receipt
     }
 
     fun makePayment(receipt: Violation) {
@@ -97,56 +111,124 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
         val key = "rjQUPktU"
         val merchantId = "4934580"
         val builder = PayUmoneySdkInitializer.PaymentParam.Builder()
-
-        var amount = java.lang.Double.parseDouble(receipt!!.TotalAmount.toString())
-        builder.setAmount(amount)
-            .setTxnId(txnId)
-            .setPhone(phone)
-            .setProductName(productName)
-            .setFirstName(firstName)
-            .setEmail(email)
-            .setsUrl(sUrl)
-            .setfUrl(fUrl)
-            .setUdf1("" + udf1)
-            .setUdf2(udf2)
-            .setUdf3(udf3)
-            .setUdf4(udf4)
-            .setUdf5(udf5)
-            .setIsDebug(isDebug)
-            .setKey(key)
-            .setMerchantId(merchantId)
-
-        val paymentParam = builder.build()
-
-
         val salt = "e5iIg1jwi8"
         val serverCalculatedHash = hashCal(
             key + "|" + txnId + "|" + amount + "|" + productName + "|"
                     + firstName + "|" + email + "|" + udf1 + "|" + udf2 + "|" + udf3 + "|" + udf4 + "|" + udf5 + "||||||" + salt
         )
-        paymentParam.setMerchantHash(serverCalculatedHash)
-        PayUmoneyFlowManager.startPayUMoneyFlow(
-            paymentParam,
-            this@ViewStatus,
-            android.R.style.Animation_Activity, false
-        )
+        /* var amount = java.lang.Double.parseDouble(receipt!!.TotalAmount.toString())
+         builder.setAmount(amount)
+             .setTxnId(txnId)
+             .setPhone(phone)
+             .setProductName(productName)
+             .setFirstName(firstName)
+             .setEmail(email)
+             .setsUrl(sUrl)
+             .setfUrl(fUrl)
+             .setUdf1("" + udf1)
+             .setUdf2(udf2)
+             .setUdf3(udf3)
+             .setUdf4(udf4)
+             .setUdf5(udf5)
+             .setIsDebug(isDebug)
+             .setKey(key)
+             .setMerchantId(merchantId)
 
+         val paymentParam = builder.build()
+
+         paymentParam.setMerchantHash(serverCalculatedHash)
+         PayUmoneyFlowManager.startPayUMoneyFlow(
+             paymentParam,
+             this@ViewStatus,
+             android.R.style.Animation_Activity, false
+         )*/
+
+        val params = HashMap<String, String>()
+        params.put(PayUMoney_Constants.KEY, key) // Get merchant key from PayU Money Account
+        params.put(PayUMoney_Constants.TXN_ID, txnId)
+        params.put(PayUMoney_Constants.AMOUNT, "" + receipt.TotalAmount)
+        params.put(PayUMoney_Constants.PRODUCT_INFO, productName)
+        params.put(PayUMoney_Constants.FIRST_NAME, firstName)
+        params.put(PayUMoney_Constants.EMAIL, email)
+        params.put(PayUMoney_Constants.PHONE, phone)
+        params.put("isdebug", "1")
+        params.put(PayUMoney_Constants.SURL, sUrl)
+        params.put(PayUMoney_Constants.FURL, fUrl)
+
+
+// User defined fields are optional (pass empty string)
+        params.put(PayUMoney_Constants.UDF1, "" + receipt.LateFees)
+        params.put(PayUMoney_Constants.UDF2, "")
+        params.put(PayUMoney_Constants.UDF3, "")
+        params.put(PayUMoney_Constants.UDF4, "")
+        params.put(PayUMoney_Constants.UDF5, "")
+
+
+// generate hash by passing params and salt
+        val hash = Utils.generateHash(params, salt) // Get Salt from PayU Money Account
+        params.put(PayUMoney_Constants.HASH, hash)
+
+
+// SERVICE PROVIDER VALUE IS ALWAYS "payu_paisa".
+        params.put(PayUMoney_Constants.SERVICE_PROVIDER, "payu_paisa")
+        val intent = Intent(this, MakePaymentActivity::class.java)
+        intent.putExtra(PayUMoney_Constants.ENVIRONMENT, PayUMoney_Constants.ENV_DEV)
+        intent.putExtra(PayUMoney_Constants.PARAMS, params)
+        startActivityForResult(intent, PayUMoney_Constants.PAYMENT_REQUEST);
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         // Result Code is -1 send from Payumoney activity
         Log.d("MainActivity", "request code $requestCode resultcode $resultCode")
-        if (requestCode == PayUmoneyFlowManager.REQUEST_CODE_PAYMENT && resultCode == Activity.RESULT_OK && data != null) {
-            val transactionResponse =
-                data!!.getParcelableExtra<TransactionResponse>(PayUmoneyFlowManager.INTENT_EXTRA_TRANSACTION_RESPONSE)
+        /* if (requestCode == PayUmoneyFlowManager.REQUEST_CODE_PAYMENT && resultCode == Activity.RESULT_OK && data != null) {
+             val transactionResponse =
+                 data!!.getParcelableExtra<TransactionResponse>(PayUmoneyFlowManager.INTENT_EXTRA_TRANSACTION_RESPONSE)
 
-            if (transactionResponse != null && transactionResponse!!.getPayuResponse() != null) {
+             if (transactionResponse != null && transactionResponse!!.getPayuResponse() != null) {
 
-                if (transactionResponse!!.transactionStatus == TransactionResponse.TransactionStatus.SUCCESSFUL) {
-                    //Success Transaction
-                    val payuResponse = JSONObject(transactionResponse!!.getPayuResponse())
-                    val taxId = payuResponse.optJSONObject("result").optString("txnid")
-                    val udf1 = payuResponse.optJSONObject("result").optString("udf1")
+                 if (transactionResponse!!.transactionStatus == TransactionResponse.TransactionStatus.SUCCESSFUL) {
+                     //Success Transaction
+                     val payuResponse = JSONObject(transactionResponse!!.getPayuResponse())
+                     val taxId = payuResponse.optJSONObject("result").optString("txnid")
+                     val udf1 = payuResponse.optJSONObject("result").optString("udf1")
+                     var mDatabase: DatabaseReference =
+                         FirebaseDatabase.getInstance().getReference(Receipt.DB_TABLE_LICENCE)
+                     val result = HashMap<String, Any>()
+                     result.put("LateFees", udf1)
+                     result.put("IsPaid", true)
+                     result.put("PaidDate", (application as CustomApp).getDateTime(Date()))
+                     mDatabase.child(FirebaseAuth.getInstance().uid!!).child(taxId).updateChildren(result)
+                     for (item in items) {
+                         if (item.Key.equals(taxId)) {
+                             item.IsPaid = true
+                         }
+                     }
+                     licenceTypeAdapter!!.notifyDataSetChanged()
+
+                 } else {
+
+                     //Failure Transaction
+                 }
+
+                 // Response from Payumoney
+
+
+                 // Response from SURl and FURL
+                 val merchantResponse = transactionResponse!!.transactionDetails
+             } else {
+
+                 Log.d(TAG, "Both objects are null!")
+             }//            else if (resultModel != null && resultModel.getError() != null) {
+             //                Log.d(TAG, "Error response : " + resultModel.getError().getTransactionResponse());
+             //            }
+         }*/
+        if (requestCode === PayUMoney_Constants.PAYMENT_REQUEST) {
+            when (resultCode) {
+                Activity.RESULT_OK -> {
+                    Toast.makeText(this@ViewStatus, "Payment Success.", Toast.LENGTH_SHORT).show()
+
+                    val taxId = globalReceipt!!.Key
+                    val udf1 = globalReceipt!!.LateFees //payuResponse.optJSONObject("result").optString("udf1")
                     var mDatabase: DatabaseReference =
                         FirebaseDatabase.getInstance().getReference(Receipt.DB_TABLE_LICENCE)
                     val result = HashMap<String, Any>()
@@ -161,22 +243,14 @@ class ViewStatus : AppCompatActivity(), StatusAdapter.OnClickListener {
                     }
                     licenceTypeAdapter!!.notifyDataSetChanged()
 
-                } else {
-
-                    //Failure Transaction
                 }
+                Activity.RESULT_CANCELED -> Toast.makeText(
+                    this@ViewStatus,
+                    "Payment Cancelled | Failed.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
-                // Response from Payumoney
-
-
-                // Response from SURl and FURL
-                val merchantResponse = transactionResponse!!.transactionDetails
-            } else {
-
-                Log.d(TAG, "Both objects are null!")
-            }//            else if (resultModel != null && resultModel.getError() != null) {
-            //                Log.d(TAG, "Error response : " + resultModel.getError().getTransactionResponse());
-            //            }
         }
     }
 
