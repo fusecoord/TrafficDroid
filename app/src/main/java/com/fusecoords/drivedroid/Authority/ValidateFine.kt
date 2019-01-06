@@ -119,7 +119,7 @@ class ValidateFine : AppCompatActivity() {
                             totalAmount += item.Penalty
                         }
                     }
-                    total.setText("Total is " + totalAmount)
+                    proceed.setText("Proceed (Total: ₹" + totalAmount + ")")
 
                     licenceTypeAdapter = FineValidateAdapter(items!!, this@ValidateFine)
                     recylerType.layoutManager = LinearLayoutManager(this@ValidateFine)

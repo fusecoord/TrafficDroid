@@ -3,7 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@color/colorPrimary"
+
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent"
@@ -23,7 +23,7 @@
 
                     style="?android:textAppearanceSmall"
                     android:background="@color/colorAccent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:id="@+id/licence"
                     android:layout_width="0dp"
@@ -34,14 +34,24 @@
                     android:layout_marginLeft="5dp"
                     style="?android:textAppearanceSmall"
                     android:background="@color/colorAccent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:id="@+id/reg"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:text="Registration"
                     android:layout_height="match_parent"/>
-
+            <Button
+                    android:layout_marginLeft="5dp"
+                    style="?android:textAppearanceSmall"
+                    android:background="@color/colorAccent"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:id="@+id/vehicleInfo"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="Vehicle Info"
+                    android:layout_height="match_parent"/>
 
         </LinearLayout>
         <LinearLayout
@@ -52,7 +62,7 @@
             <Button
                     style="?android:textAppearanceSmall"
                     android:background="@color/colorAccent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:id="@+id/taxation"
                     android:layout_width="0dp"
@@ -63,7 +73,7 @@
                     android:layout_marginLeft="5dp"
                     style="?android:textAppearanceSmall"
                     android:background="@color/colorAccent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:id="@+id/puc"
                     android:layout_width="0dp"
@@ -74,7 +84,7 @@
                     android:layout_marginLeft="5dp"
                     style="?android:textAppearanceSmall"
                     android:background="@color/colorAccent"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:id="@+id/insurance"
                     android:layout_width="0dp"
@@ -101,7 +111,7 @@
                     android:hint="@string/firstname"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -115,7 +125,7 @@
                     android:hint="@string/lastname"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -129,7 +139,7 @@
                     android:hint="@string/fathername"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -144,7 +154,7 @@
                     android:maxLines="1"
                     android:inputType="date"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -159,7 +169,7 @@
                     android:hint="@string/bloodgroup"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -174,7 +184,7 @@
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -191,7 +201,7 @@
                     android:inputType="phone"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
@@ -206,13 +216,14 @@
                     android:inputType="textPostalAddress"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
             <EditText
+
                     android:id="@+id/pincode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -220,7 +231,7 @@
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/black"/>
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 </ScrollView>

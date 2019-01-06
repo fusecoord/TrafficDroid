@@ -26,7 +26,7 @@ class LicenceDetail : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_licence_detail)
-
+        LicenceTypeAdapter.flow = 1
         items = ArrayList()
         licenceTypeAdapter = LicenceTypeAdapter(items, this)
         recylerType.adapter = licenceTypeAdapter

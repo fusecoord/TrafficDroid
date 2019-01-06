@@ -41,14 +41,16 @@ class UserInfoActivity : AppCompatActivity() {
         items = ArrayList()
         val user = FirebaseAuth.getInstance().currentUser
 
-        var mStorage: StorageReference =
-            FirebaseStorage.getInstance()
-                .getReference(User.DB_IMAGE_PATH)
+
 
         val image = findViewById(R.id.img_profile) as ImageView
         licence.setOnClickListener {
             LicenceDetail.LicenceNo = LicenceNo
             startActivity(Intent(this@UserInfoActivity, LicenceDetail::class.java))
+        }
+        vehicleInfo.setOnClickListener {
+            VehicleDetail.vehicleNoStr = vehicleNo
+            startActivity(Intent(this@UserInfoActivity, VehicleDetail::class.java))
         }
         puc.setOnClickListener {
             goTo(3, vehicleNo)
@@ -67,18 +69,24 @@ class UserInfoActivity : AppCompatActivity() {
             puc.visibility = View.GONE
             reg.visibility = View.GONE
             insurance.visibility = View.GONE
+            vehicleInfo.visibility=View.GONE
         }
         if (LicenceNo.equals(""))
             licence.visibility = View.GONE
 
-        mStorage.child(User.DB_IMAGE_PATH + "/" + reportedId + ".png").getDownloadUrl()
-            .addOnSuccessListener(OnSuccessListener<Any> { uri ->
-                System.out.println("Pass" + uri)
-                Picasso.get().load(uri.toString()).into(image)
-            }).addOnFailureListener(OnFailureListener {
-                // Handle any errors
-                System.out.println("Failuare")
-            })
+
+        var mStorage: StorageReference =
+            FirebaseStorage.getInstance()
+                .getReference(CustUser.DB_IMAGE_PATH + "/" +reportedId + ".png")
+        var url = mStorage.getDownloadUrl()
+        url.addOnSuccessListener(OnSuccessListener<Any> { uri ->
+            System.out.println("Pass" + uri)
+            Picasso.get().load(uri.toString()).into(image)
+        }).addOnFailureListener(OnFailureListener {
+            // Handle any errors
+            System.out.println("Failuare")
+        })
+
 
         var mDatabase: DatabaseReference =
             FirebaseDatabase.getInstance().getReference(CustUser.DB_USER_PATH)

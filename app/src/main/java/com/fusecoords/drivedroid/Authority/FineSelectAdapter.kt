@@ -16,7 +16,8 @@ class FineSelectAdapter(var items: ArrayList<Fine>, val context: Context) : Recy
 
     override fun onBindViewHolder(holder: FineSelectHolder, position: Int) {
         holder.licenceNo.text = items.get(position).Offence
-        holder.price.text = items.get(position).Penalty.toString()
+        holder.section.text = "Section: " + items.get(position).Section
+        holder.price.text = "\u20B9"+ items.get(position).Penalty.toString()
         holder.check.isChecked = items.get(position).isChecked
 
         holder.check.setOnClickListener {
@@ -44,5 +45,6 @@ class FineSelectHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
     var licenceNo: TextView = view.findViewById(R.id.licenceNo)
     var price: TextView = view.findViewById(R.id.price)
+    var section: TextView = view.findViewById(R.id.section)
     var check: CheckBox = view.findViewById(R.id.checkbox)
 }

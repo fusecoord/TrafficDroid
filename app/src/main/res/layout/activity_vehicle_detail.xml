@@ -3,20 +3,20 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".Authority.LicenceDetail">
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Authority.VehicleDetail">
     <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
         <EditText
-                android:id="@+id/licenceNo"
+                android:id="@+id/vehicleNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/drivingLicenceNo"
+                android:hint="@string/vehicleNo"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -28,10 +28,10 @@
             android:layout_height="wrap_content">
 
         <EditText
-                android:id="@+id/doi"
+                android:id="@+id/regNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/dateofissue"
+                android:hint="@string/regNo"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -43,10 +43,41 @@
             android:layout_height="wrap_content">
 
         <EditText
-                android:id="@+id/drivingexpiry"
+                android:id="@+id/regDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/validtill"
+                android:hint="@string/regDate"
+                android:inputType="datetime"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"/>
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+                android:id="@+id/model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/model"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/black"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+                android:id="@+id/classv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/vhielceClass"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -58,10 +89,10 @@
             android:layout_height="wrap_content">
 
         <EditText
-                android:id="@+id/dld"
+                android:id="@+id/chasis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/dld"
+                android:hint="@string/chasisNo"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
@@ -74,73 +105,45 @@
             android:layout_height="wrap_content">
 
         <EditText
-                android:id="@+id/issueauth"
+                android:id="@+id/engineNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/issueauth"
+                android:hint="@string/engineNo"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@android:color/black"/>
 
     </android.support.design.widget.TextInputLayout>
-
-    <LinearLayout
-
-            android:orientation="horizontal"
+    <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
-
-        <TextView
-                android:id="@+id/type"
-                android:layout_weight="1.5"
-                android:layout_width="0dp"
+        <EditText
+                android:id="@+id/fuelType"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="COV"
+                android:hint="@string/fuelType"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:textSize="15sp"
+                android:singleLine="true"
                 android:textColor="@android:color/black"/>
 
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-                android:layout_weight="1"
-                android:id="@+id/issueDate"
-                android:layout_width="0dp"
+        <EditText
+                android:id="@+id/rcexpiry"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="DOI"
-                android:textSize="15sp"
+                android:hint="@string/rcExpiry"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:singleLine="true"
                 android:textColor="@android:color/black"/>
 
-
-        <ImageView
-                android:visibility="gone"
-                android:id="@+id/save"
-                android:src="@drawable/right"
-                android:padding="10dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:text="@string/action_close"
-        />
-        <ImageView
-                android:visibility="gone"
-                android:id="@+id/cancel"
-                android:padding="12dp"
-                android:src="@drawable/wrong"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:text="@string/action_close"
-
-        />
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="5dp"
-            android:id="@+id/recylerType"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-    </android.support.v7.widget.RecyclerView>
+    </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>

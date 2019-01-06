@@ -17,7 +17,7 @@
         <EditText
                 android:layout_weight="1"
                 android:id="@+id/vehicleNo"
-                android:hint="Vehicle nO"
+                android:hint="Enter Vehicle No"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -29,16 +29,19 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <EditText
+            android:gravity="top"
+            android:id="@+id/comment"
+            android:hint="Comment"
+            android:lines="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     <android.support.v4.view.ViewPager
             android:layout_weight="1"
             android:id="@+id/pager"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"/>
-    <EditText
-            android:id="@+id/comment"
-            android:hint="Comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+
 
     <LinearLayout
             android:orientation="horizontal"
@@ -48,11 +51,16 @@
                 android:id="@+id/addMore"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/white"
                 android:text="Add more photo"
                 android:layout_height="wrap_content"/>
         <Button
                 android:id="@+id/submit"
+                android:layout_marginLeft="10dp"
                 android:layout_width="0dp"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="@color/white"
                 android:layout_weight="1"
                 android:text="Submit"
                 android:layout_height="wrap_content"/>

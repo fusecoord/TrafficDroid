@@ -40,6 +40,7 @@ class AddLicence : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_licence)
         items = ArrayList()
+        LicenceTypeAdapter.flow = 0
         licenceTypeAdapter = LicenceTypeAdapter(items, this)
         recylerType.adapter = licenceTypeAdapter
         recylerType.layoutManager = LinearLayoutManager(this)

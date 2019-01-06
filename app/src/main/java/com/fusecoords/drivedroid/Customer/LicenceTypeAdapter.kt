@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import com.fusecoords.drivedroid.R
 
 class LicenceTypeAdapter(val items: ArrayList<LicenceType>, val context: Context) :
     RecyclerView.Adapter<MyViewHolder>() {
+    companion object {
+        var flow: Int = 0
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_licence_type, parent, false))
     }
@@ -18,6 +23,11 @@ class LicenceTypeAdapter(val items: ArrayList<LicenceType>, val context: Context
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.issueDate.setText(items.get(position).LicenceDOI)
         holder.type.setText(items.get(position).LicenceType)
+        if (flow == 0)
+            holder.cancel.visibility = View.VISIBLE
+        else
+            holder.cancel.visibility = View.GONE
+
     }
 
     // Gets the number of animals in the list
@@ -30,4 +40,5 @@ class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
     var issueDate: TextView = view.findViewById(R.id.issueDate)
     var type: TextView = view.findViewById(R.id.type)
+    var cancel: ImageView = view.findViewById(R.id.cancel)
 }

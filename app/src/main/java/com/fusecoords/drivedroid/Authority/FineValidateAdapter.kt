@@ -17,10 +17,12 @@ class FineValidateAdapter(var items: ArrayList<Fine>, val context: Context) :
 
     override fun onBindViewHolder(holder: FineValidateHolder, position: Int) {
         holder.licenceNo.text = items.get(position).Offence
-        holder.price.text = items.get(position).Penalty.toString()
+        holder.price.text = "\u20B9" + items.get(position).Penalty.toString()
         if (items.get(position).violationList.size > 0) {
             holder.times.text = "(" + items.get(position).violationList.size.toString() + " times)"
+
             holder.times.visibility = View.VISIBLE
+
         } else
             holder.times.visibility = View.GONE
         var violationList = ""
