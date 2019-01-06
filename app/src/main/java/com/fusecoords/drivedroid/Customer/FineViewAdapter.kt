@@ -16,9 +16,9 @@ class FineViewAdapter(var items: ArrayList<Fine>, val context: Context) : Recycl
 
     override fun onBindViewHolder(holder: FineSelectHolder, position: Int) {
         holder.licenceNo.text = items.get(position).Offence
-        holder.price.text = items.get(position).Penalty.toString()
+        holder.price.text = "\u20B9" + items.get(position).Penalty.toString()
 
-        holder.section.text = items.get(position).Section.toString()
+        holder.section.text = "Section: " + items.get(position).Section.toString()
 
     }
 

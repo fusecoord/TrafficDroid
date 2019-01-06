@@ -5,7 +5,7 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              android:animateLayoutChanges="true"
-                                             android:background="@color/colorPrimaryDark"
+                                             android:background="@drawable/splash"
 >
 
     <ImageView
@@ -13,6 +13,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
+            android:visibility="gone"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toTopOf="@+id/parent_permission"
             app:layout_constraintDimensionRatio="6:2.5"
@@ -21,14 +22,16 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
+            android:background="#AA000000"
             android:id="@+id/parent_permission"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingStart="8dp"
             android:gravity="center"
             android:orientation="vertical"
             android:visibility="gone"
@@ -41,7 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:text="asfdasfdasdf"
                 android:textColor="@color/white"/>
 
         <LinearLayout

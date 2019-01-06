@@ -9,92 +9,279 @@
     <ScrollView android:layout_height="wrap_content"
                 android:layout_width="match_parent">
         <LinearLayout
-                android:orientation="vertical" android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent">
-            <Button
-                    android:id="@+id/add_licence"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
+            <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/btn_add_licence"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
-            <Button
-                    android:id="@+id/add_vehicle"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="@string/btn_add_vehicle"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent">
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/add_licence"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:layout_height="50dp"
+                                   android:padding="8dp"
+                                   android:src="@drawable/licence_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
 
-            <Button
-                    android:id="@+id/view_status"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="View Pending Fines"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
+                                android:text="@string/btn_add_licence"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-            <Button
-                    android:id="@+id/view_fine"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="View Fine"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/add_vehicle"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:padding="10dp"
+                                   android:layout_height="50dp"
+                                   android:src="@drawable/vehicle_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
 
-            <Button
-                    android:id="@+id/check_towed"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="Check for vehicle towed"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
-            <Button
-                    android:id="@+id/traffic_division"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="View Traffic Division"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
-            <Button
-                    android:id="@+id/traffic_rto"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="View RTO offices"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
+                                android:text="@string/btn_add_vehicle"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
-            <Button
-                    android:id="@+id/view_alert"
-                    style="?android:textAppearanceSmall"
-                    android:layout_width="match_parent"
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/colorPrimary"
-                    android:text="View Traffic Alert"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"/>
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent">
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/view_status"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:layout_height="50dp"
+                                   android:padding="10dp"
+                                   android:src="@drawable/fine_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pending Fines"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/view_fine"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:padding="10dp"
+                                   android:layout_height="50dp"
+                                   android:src="@drawable/fine_list_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="View Fine"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent">
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/check_towed"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:layout_height="50dp"
+                                   android:padding="6dp"
+                                   android:src="@drawable/tow_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Vehicle Towed?"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/traffic_division"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:padding="10dp"
+                                   android:layout_height="50dp"
+                                   android:src="@drawable/division_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="View Traffic Division"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent">
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/traffic_rto"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:layout_height="50dp"
+                                   android:padding="10dp"
+                                   android:src="@drawable/office_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="View RTO offices"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:padding="10dp"
+                            android:id="@+id/view_alert"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <ImageView android:layout_width="50dp"
+                                   android:padding="10dp"
+                                   android:layout_height="50dp"
+                                   android:src="@drawable/alert_black"/>
+                        <TextView
+                                android:layout_marginTop="10dp"
+                                style="?android:textAppearanceSmall"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:text="View Traffic Alert"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+
             <Button
                     android:id="@+id/sign_out"
                     style="?android:textAppearanceSmall"

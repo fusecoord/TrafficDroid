@@ -10,8 +10,7 @@ import kotlinx.android.synthetic.main.activity_cust_dashboard.*
 
 class CustDashboard : AppCompatActivity() {
     private var auth: FirebaseAuth? = null
-    private var btnAddLicence: Button? = null
-    private var btnAddVehicle: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -29,12 +28,12 @@ class CustDashboard : AppCompatActivity() {
 //        permisison check with locaiton -done
 
         setContentView(R.layout.activity_cust_dashboard)
-        btnAddLicence = findViewById(R.id.add_licence) as Button
-        btnAddLicence!!.setOnClickListener {
+
+        add_licence!!.setOnClickListener {
             startActivity(Intent(this@CustDashboard, LicenceList::class.java))
         }
-        btnAddVehicle = findViewById(R.id.add_vehicle) as Button
-        btnAddVehicle!!.setOnClickListener {
+
+        add_vehicle!!.setOnClickListener {
             startActivity(Intent(this@CustDashboard, VehicleList::class.java))
         }
         view_fine.setOnClickListener {

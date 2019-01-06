@@ -52,9 +52,13 @@ class AddLicence : AppCompatActivity() {
         }
         img_profile.setOnClickListener { selectImage() }
         save_item.setOnClickListener {
+
             var licenceType = LicenceType()
             licenceType.LicenceType = type.text.toString()
             licenceType.LicenceDOI = issueDate.text.toString()
+
+            type.setText("")
+            issueDate.setText("")
             items.add(licenceType)
             licenceTypeAdapter!!.notifyDataSetChanged()
         }

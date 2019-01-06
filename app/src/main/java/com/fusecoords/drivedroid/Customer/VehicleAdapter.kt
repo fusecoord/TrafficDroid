@@ -21,7 +21,15 @@ class VehicleAdapter(val items: ArrayList<Vehicle>, val context: Context) : Recy
     }
 
     override fun onBindViewHolder(holder: VehicleHolder, position: Int) {
-        holder.licenceNo.text = items.get(position).VehicleNo
+        holder.vehicleNo.setText(items.get(position).VehicleNo)
+        holder.regNo.setText(items.get(position).RegNo)
+        holder.dateReg.setText(items.get(position).RegDate)
+        holder.dateExpReg.setText(items.get(position).RcExpiry)
+        holder.chasisNo.setText(items.get(position).ChasisNo)
+        holder.engineNo.setText(items.get(position).EngineNo)
+        holder.classV.setText(items.get(position).Class)
+        holder.model.setText(items.get(position).Model)
+        holder.fuelType.setText(items.get(position).FuelType)
 
         holder.insurance.tag = items.get(position)
         holder.reg.tag = items.get(position)
@@ -60,7 +68,17 @@ class VehicleAdapter(val items: ArrayList<Vehicle>, val context: Context) : Recy
 
 class VehicleHolder(view: View) : RecyclerView.ViewHolder(view) {
     // Holds the TextView that will add each animal to
-    var licenceNo: TextView = view.findViewById(R.id.licenceNo)
+    var vehicleNo: EditText = view.findViewById(R.id.vehicleNo)
+    var regNo: EditText = view.findViewById(R.id.regNo)
+    var dateReg: EditText = view.findViewById(R.id.dateReg)
+    var dateExpReg: EditText = view.findViewById(R.id.dateExpReg)
+    var chasisNo: EditText = view.findViewById(R.id.chasisNo)
+    var engineNo: EditText = view.findViewById(R.id.engineNo)
+    var classV: EditText = view.findViewById(R.id.classV)
+    var model: EditText = view.findViewById(R.id.model)
+    var fuelType: EditText = view.findViewById(R.id.fuelType)
+
+
     var reg: Button = view.findViewById(R.id.reg)
     var taxation: Button = view.findViewById(R.id.taxation)
     var puc: Button = view.findViewById(R.id.puc)

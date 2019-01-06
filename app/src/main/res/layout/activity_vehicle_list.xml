@@ -7,18 +7,25 @@
         android:orientation="vertical"
         android:layout_height="match_parent"
         tools:context=".Customer.VehicleList">
+    <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            app:title="My Vehicles"
+            app:titleTextColor="@color/white"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp">
 
-    <Button
-            android:id="@+id/addVehicle"
-            style="?android:textAppearanceSmall"
-            android:padding="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorAccent"
-            android:text="@string/action_add_vehicle"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"/>
+        <ImageView
+                android:layout_gravity="right"
+                android:src="@drawable/plus"
+                android:id="@+id/addVehicle"
+                android:padding="16dp"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@null"/>
+
+    </android.support.v7.widget.Toolbar>
 
 
     <android.support.v7.widget.RecyclerView

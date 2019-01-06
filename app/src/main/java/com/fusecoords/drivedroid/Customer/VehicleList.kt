@@ -17,6 +17,7 @@ class VehicleList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_vehicle_list)
+        setSupportActionBar(findViewById(R.id.my_toolbar))
         items = ArrayList()
         licenceTypeAdapter = VehicleAdapter(items, this)
         recylerType.adapter = licenceTypeAdapter

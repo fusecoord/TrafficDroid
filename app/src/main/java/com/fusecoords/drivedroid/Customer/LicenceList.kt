@@ -9,8 +9,8 @@ import com.fusecoords.drivedroid.Authority.User
 import com.fusecoords.drivedroid.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.activity_add_licence.*
 import com.google.firebase.database.DataSnapshot
+import kotlinx.android.synthetic.main.activity_licence_list.*
 
 
 class LicenceList : AppCompatActivity() {
@@ -20,6 +20,7 @@ class LicenceList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_licence_list)
+        setSupportActionBar(findViewById(R.id.my_toolbar))
         items = ArrayList()
         licenceTypeAdapter = LicenceAdapter(items, this)
         recylerType.adapter = licenceTypeAdapter

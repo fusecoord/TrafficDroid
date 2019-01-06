@@ -1,62 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <TextView
-            android:padding="@dimen/activity_horizontal_margin"
-            android:id="@+id/licenceNo"
-            android:text="Hello"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"/>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                    xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+                                    android:layout_margin="10dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
     <LinearLayout
-            android:id="@+id/expand"
+
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:padding="5dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="Maharashtra Administration, Transport Department"/>
+            <TextView
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:textStyle="bold"
+                    android:text="Certificate of Registration"/>
+        </LinearLayout>
 
-        <Button
-                style="?android:textAppearanceSmall"
-                android:background="@color/colorAccent"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:id="@+id/reg"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Registration"
-                android:layout_height="match_parent"/>
-        <Button
-                style="?android:textAppearanceSmall"
-                android:background="@color/colorAccent"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:id="@+id/taxation"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Taxation"
-                android:layout_height="match_parent"/>
-        <Button
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                style="?android:textAppearanceSmall"
-                android:background="@color/colorAccent"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:id="@+id/puc"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="PUC"
-                android:layout_height="match_parent"/>
-        <Button
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
 
-                style="?android:textAppearanceSmall"
-                android:background="@color/colorAccent"
-                android:textColor="@android:color/black"
-                android:textStyle="bold"
-                android:id="@+id/insurance"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="Insurance"
-                android:layout_height="match_parent"/>
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/regNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Reg No."
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/dateReg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Date of Reg"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/dateExpReg"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Reg Validity"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/chasisNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Chasis No"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/engineNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Engine No"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/classV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Class"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Model"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputLayout
+
+                    android:layout_marginTop="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/fuelType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Fuel Type"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+
+                    android:layout_marginTop="5dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                <EditText
+                        android:background="@null"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:id="@+id/vehicleNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Vehicle No"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"/>
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:padding="10dp"
+                android:id="@+id/expand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <Button
+                    style="?android:textAppearanceSmall"
+                    android:background="@null"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:id="@+id/reg"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Registration"
+                    android:layout_height="30dp"/>
+            <Button
+                    style="?android:textAppearanceSmall"
+                    android:background="@null"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:id="@+id/taxation"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Taxation"
+                    android:layout_height="30dp"/>
+            <Button
+
+                    style="?android:textAppearanceSmall"
+                    android:background="@null"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:id="@+id/puc"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PUC"
+                    android:layout_height="30dp"/>
+            <Button
+
+                    style="?android:textAppearanceSmall"
+                    android:background="@null"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:id="@+id/insurance"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Insurance"
+                    android:layout_height="30dp"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</android.support.v7.widget.CardView>
