@@ -99,7 +99,7 @@ class PayFine : AppCompatActivity() {
                                 }
                             }
                             startActivity(Intent(this@PayFine, FineListSelect::class.java))
-                        } else {
+                        } else  if (flow == 2){
                             for (snapshot in dataSnapshot.children) {
                                 if (mTabHost!!.currentTab == 1) {
                                     var bullet = snapshot.getValue<Vehicle>(Vehicle::class.java!!)
@@ -114,6 +114,21 @@ class PayFine : AppCompatActivity() {
                                 }
                             }
                             startActivity(Intent(this@PayFine, UserInfoActivity::class.java))
+                        }else  if (flow == 3){
+                            for (snapshot in dataSnapshot.children) {
+                                if (mTabHost!!.currentTab == 1) {
+                                    var bullet = snapshot.getValue<Vehicle>(Vehicle::class.java!!)
+                                    History.reportedId = bullet!!.UserId!!
+                                    History.vehicleNo = input
+                                    History.LicenceNo = ""
+                                } else {
+                                    var bullet = snapshot.getValue<Licence>(Licence::class.java!!)
+                                    History.reportedId = bullet!!.UserId!!
+                                    History.vehicleNo = ""
+                                    History.LicenceNo = input
+                                }
+                            }
+                            startActivity(Intent(this@PayFine, History::class.java))
                         }
                     } else {
                         // Do stuff

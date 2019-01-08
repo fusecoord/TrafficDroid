@@ -239,10 +239,10 @@ class TowVehicle : AppCompatActivity() {
                         if (sizevalue > 2048000) {
                             // showToast(getString(R.string.error_image_size))
                         } else {
-                            if (extension == "jpg" || extension == "png" || extension == "gif") {
+                           // if (extension == "jpg" || extension == "png" || extension == "gif") {
                                 immagex!!.add(selectedImage);
                                 pagerAdapter!!.notifyDataSetChanged()
-                            }
+                          //  }
                             //else
                             // showToast(getString(R.string.error_image_type))
                         }

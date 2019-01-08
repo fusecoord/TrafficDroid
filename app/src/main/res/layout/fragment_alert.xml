@@ -7,20 +7,28 @@
     <LinearLayout
             android:padding="@dimen/activity_horizontal_margin"
             android:orientation="vertical"
+            android:minHeight="100dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <!-- TODO: Update blank fragment layout -->
+
         <TextView
+                android:id="@+id/alert"
+                android:textSize="14sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hello_blank_fragment"/>
+
+        <TextView
+                android:textSize="12sp"
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/hello_blank_fragment"/>
         <TextView
-                android:id="@+id/alert"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment"/>
-        <TextView
+                android:gravity="right"
+                android:textSize="10sp"
+                android:textStyle="italic"
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

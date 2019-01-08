@@ -102,7 +102,10 @@ class MainActivity : AppCompatActivity() {
             PayFine.flow = 2
             startActivity(Intent(this@MainActivity, PayFine::class.java))
         }
-
+        history.setOnClickListener {
+            PayFine.flow = 3
+            startActivity(Intent(this@MainActivity, PayFine::class.java))
+        }
         sendAlert.setOnClickListener {
             startActivity(Intent(this@MainActivity, SendAlert::class.java))
         }
@@ -120,7 +123,6 @@ class MainActivity : AppCompatActivity() {
             signOut()
 
         }
-
 
 
     }

@@ -27,6 +27,27 @@
                     android:text="MAHARASHTRA MOTOR DRIVING LICENCE"/>
         </LinearLayout>
 
+        <android.support.design.widget.TextInputLayout
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <EditText
+                    android:background="@null"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:id="@+id/dlNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="DL No."
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"/>
+
+        </android.support.design.widget.TextInputLayout>
         <LinearLayout
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -36,24 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <android.support.design.widget.TextInputLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
 
-                <EditText
-                        android:background="@null"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:id="@+id/dlNo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="DL No."
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:textColor="@android:color/black"/>
-
-            </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"

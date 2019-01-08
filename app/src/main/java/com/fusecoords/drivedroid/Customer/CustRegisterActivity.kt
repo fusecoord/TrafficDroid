@@ -360,9 +360,9 @@ class CustRegisterActivity : AppCompatActivity() {
                             // showToast(getString(R.string.error_image_size))
 
                         } else {
-                            if (extension == "jpg" || extension == "png" || extension == "gif") {
+                         //   if (extension == "jpg" || extension == "png" || extension == "gif") {
                                 img_profile.setImageBitmap(selectedImage)
-                            }
+                           // }
                             //else
                             // showToast(getString(R.string.error_image_type))
                         }

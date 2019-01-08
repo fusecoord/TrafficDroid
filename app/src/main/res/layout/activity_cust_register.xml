@@ -33,6 +33,7 @@
                         android:padding="@dimen/activity_horizontal_margin">
 
                     <ImageButton
+                            android:scaleType="fitXY"
                             android:background="@android:color/transparent"
                             android:id="@+id/img_profile"
                             android:layout_width="@dimen/logo_w_h"

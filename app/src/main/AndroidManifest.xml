@@ -157,7 +157,12 @@
                 android:name=".Customer.ChangePasswordActivity"
                 android:label="Change Password">
         </activity>
-        <activity android:name=".Authority.VehicleDetail">
+        <activity
+                android:label="Vehicle Detail"
+                android:name=".Authority.VehicleDetail">
+        </activity>
+        <activity android:label="History"
+                 android:name=".Authority.History">
         </activity>
     </application>
 
