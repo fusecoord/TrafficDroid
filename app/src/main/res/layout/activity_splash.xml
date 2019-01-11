@@ -5,7 +5,7 @@
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
                                              android:animateLayoutChanges="true"
-                                             android:background="@drawable/splash"
+                                             android:background="@drawable/diagnoal"
 >
 
     <ImageView
@@ -13,13 +13,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-            android:visibility="gone"
-            android:src="@mipmap/ic_launcher"
+            android:visibility="visible"
+            android:src="@drawable/splash_new"
             app:layout_constraintBottom_toTopOf="@+id/parent_permission"
             app:layout_constraintDimensionRatio="6:2.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_bias="0.45"/>
 
     <LinearLayout
             android:background="#AA000000"
@@ -77,5 +77,18 @@
                     android:text="Proceed"/>
         </LinearLayout>
     </LinearLayout>
+    <TextView
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center"
+            android:text="Road Transport Authority"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:id="@+id/textView2" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="151dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="151dp" android:layout_marginTop="17dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
 </android.support.constraint.ConstraintLayout>

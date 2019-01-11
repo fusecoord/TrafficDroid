@@ -10,7 +10,7 @@
     <android.support.v7.widget.Toolbar
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            app:title="Welcome to E-Fine"
+            app:title="Welcome to RTA"
             app:titleTextColor="@color/white"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
